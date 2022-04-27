@@ -46,6 +46,12 @@
 // More includes here...
 #include "autons.hpp"
 
+#include "675A/globalVariables.hpp"
+#include "675A/helperFunctions.hpp"
+#include "675A/robotConfig.hpp"
+#include "675A/opControl.hpp"
+
+
 /**
  * If you find doing pros::Motor() to be tedious and you'd prefer just to do
  * Motor, you can use the namespace with the following commented out line.

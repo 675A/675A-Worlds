@@ -5,11 +5,11 @@
 Drive chassis (
   // Left Chassis Ports (negative port will reverse it!)
   //   the first port is the sensored port (when trackers are not used!)
-  {-15, -16}
+  {-17, -18, -19}
 
   // Right Chassis Ports (negative port will reverse it!)
   //   the first port is the sensored port (when trackers are not used!)
-  ,{6, 5}
+  ,{11, 14, 15}
 
   // IMU Port
   ,20
@@ -71,13 +71,17 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.add_autons({
-    Auton("Example Drive\n\nDrive forward and come back.", drive_example),
-    Auton("Example Turn\n\nTurn 3 times.", turn_example),
-    Auton("Drive and Turn\n\nDrive forward, turn, come back. ", drive_and_turn),
-    Auton("Drive and Turn\n\nSlow down during drive.", wait_until_change_speed),
-    Auton("Swing Example\n\nSwing, drive, swing.", swing_example),
-    Auton("Combine all 3 movements", combining_movements),
-    Auton("Interference\n\nAfter driving forward, robot performs differently if interfered or not.", interfered_example),
+
+
+
+
+    // Auton("Example Drive\n\nDrive forward and come back.", drive_example),
+    // Auton("Example Turn\n\nTurn 3 times.", turn_example),
+    // Auton("Drive and Turn\n\nDrive forward, turn, come back. ", drive_and_turn),
+    // Auton("Drive and Turn\n\nSlow down during drive.", wait_until_change_speed),
+    // Auton("Swing Example\n\nSwing, drive, swing.", swing_example),
+    // Auton("Combine all 3 movements", combining_movements),
+    // Auton("Interference\n\nAfter driving forward, robot performs differently if interfered or not.", interfered_example),
   });
 
   // Initialize chassis and auton selector
@@ -151,6 +155,8 @@ void autonomous() {
 void opcontrol() {
   // This is preference to what you like to drive on.
   chassis.set_drive_brake(MOTOR_BRAKE_COAST);
+  lift.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+  conveyor.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
 
   while (true) {
 
@@ -161,7 +167,7 @@ void opcontrol() {
     // chassis.arcade_flipped(ez::SINGLE); // Flipped single arcade
 
     // . . .
-    // Put more user control code here!
+    opControl();
     // . . .
 
     pros::delay(ez::util::DELAY_TIME); // This is used for timer calculations!  Keep this ez::util::DELAY_TIME

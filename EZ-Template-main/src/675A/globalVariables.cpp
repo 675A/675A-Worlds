@@ -7,8 +7,9 @@ bool conveyorOn = false;
 int liftUpSpeed = 100;
 int liftDownSpeed = 100;
 
-int conveyorSpeed = 600; // prolly need to change
+int conveyorSpeed = 600;
 
-
-bool clampIsDown = false;
-bool CanstealerIsDown = false;
+bool frontClampIsDown = false;
+bool backClampIsDown = false;
+bool canstealerIsDown = false;
+bool conveyorIsOn = false;
